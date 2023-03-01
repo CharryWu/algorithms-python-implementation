@@ -1,7 +1,7 @@
 class Solution:
-    #using recursion + caching
+    # using recursion + caching
     def minDistance1(self, word1: str, word2: str) -> int:
-        @cache #this decorator will automatically cache the function result 
+        @cache  # this decorator will automatically cache the function result
         def minD(w1, w2):
             if w1 == "":
                 return len(w2)
@@ -16,15 +16,15 @@ class Solution:
 
         return minD(word1, word2)
 
-     #using buttom-up dp
-     def minDistance2(self, word1: str, word2: str) -> int:
+    # using buttom-up dp
+    def minDistance2(self, word1: str, word2: str) -> int:
         n, m = len(word1), len(word2)
-        #1-n and 1-m
-        #min edit distance of word starting from (i-tj,j-th)
-        dp = [[0] * (m+1) for _ in range(n+1)] 
+        # 1-n and 1-m
+        # min edit distance of word starting from (i-tj,j-th)
+        dp = [[0] * (m+1) for _ in range(n+1)]
 
-        #initilization
-        for i in range(1, n+1): 
+        # initilization
+        for i in range(1, n+1):
             dp[i][0] = i
         for j in range(1, m+1):
             dp[0][j] = j

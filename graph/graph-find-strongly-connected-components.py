@@ -3,8 +3,6 @@
 from collections import defaultdict
 
 # This class represents a directed graph using adjacency list representation
-
-
 class Graph:
 
     def __init__(self, vertices):
@@ -85,6 +83,5 @@ g.addEdge(3, 5)
 g.addEdge(4, 2)
 g.addEdge(5, 6)
 
-print ("Following are strongly connected components " +
-                           "in given graph")
+print ("Following are strongly connected components in given graph")
 g.printSCCs()
