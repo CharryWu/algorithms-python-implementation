@@ -1,7 +1,7 @@
 def graphTraverse(graph, s):
     n = len(graph)
     # record nodes visited so far, prevent cycles
-    visited = [False] * n # len(visited) always > len(path)
+    visited = set() # len(visited) always > len(path)
     # record paths from the starting vertex till current node so far
     path = []
 
@@ -10,10 +10,10 @@ def graphTraverse(graph, s):
     # parent node, you cannot go back; in general graphs, you might be able to revisit
     # the same node, if there exist cycles in the graph.
     def traverse(graph, node):
-        if visited[node]: # Cycle detected!
+        if node in visited: # Cycle detected!
             return
         # mark current node visited
-        visited[node] = True
+        visited.add(node)
         # make the decision: visit node and add it to path
         path.append(node)
 
