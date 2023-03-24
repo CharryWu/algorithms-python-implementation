@@ -29,13 +29,17 @@ def heapify(arr, n, i):
         arr[i], arr[largest] = arr[largest], arr[i]
         heapify(arr, n, largest)
 
-def heapSort(arr):
-    arr
-    n = len(arr)
-
+def buildMaxHeap(arr, n):
     # Build max heap
     for i in range(n//2, -1, -1):
         heapify(arr, n, i)
+
+def heapSort(arr):
+    """
+    Time Complexity: O(nlogn). Call to buildMaxHeap takes O(n), each n-1 call to heapify takes O(logn)
+    """
+    n = len(arr)
+    buildMaxHeap(arr, n)
 
     for i in range(n-1, 0, -1):
         # Swap
