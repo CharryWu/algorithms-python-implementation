@@ -68,6 +68,12 @@ class MaxHeap:
         For every node to be positioned following the max-heap property,
         we call the __maxHeapify() method at every index of that array,
         starting from the bottom of the heap.
+
+        heapify(array):
+            Root = array[0]
+            Largest = largest( array[0] , array [2*0 + 1]. array[2*0+2])
+            if(Root != Largest)
+                Swap(Root, Largest)
         """
         left = (index * 2) + 1
         right = (index * 2) + 2
@@ -112,7 +118,7 @@ class MaxHeap:
         maxval = self.heap[0]
         if self.size > 1:
             self.heap[0] = self.heap[self.size - 1]
-            self.size = self.size - 1
+            self.size -= 1
             self.__maxHeapify(0)
             return maxval
         elif self.size == 1:
@@ -123,14 +129,13 @@ class MaxHeap:
 
     def buildHeap(self, arr) -> None:
         self.heap = list(arr)
-        self.size = len(self.heap)
+        self.size = len(arr)
 
-        for i in range(len(self.heap)-1, -1, -1):
+        for i in range(len(arr)//2, -1, -1):
             self.__maxHeapify(i)
 
 if __name__ == '__main__':
-    max_heap = MaxHeap()
-    max_heap.buildHeap([1,2,3,9,7,8])
+    max_heap = MaxHeap([1,2,3,9,7,8])
     max_heap.insert(4)
     assert max_heap.removeMax() == 9
     assert max_heap.removeMax() == 8

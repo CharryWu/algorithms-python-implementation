@@ -68,6 +68,12 @@ class MinHeap:
         For every node to be positioned following the min-heap property,
         we call the __minHeapify() method at every index of that array,
         starting from the bottom of the heap.
+
+        heapify(array):
+            Root = array[0]
+            Largest = largest( array[0] , array [2*0 + 1]. array[2*0+2])
+            if(Root != Largest)
+                Swap(Root, Largest)
         """
         left = (index * 2) + 1
         right = (index * 2) + 2
@@ -123,9 +129,9 @@ class MinHeap:
 
     def buildHeap(self, arr) -> None:
         self.heap = list(arr)
-        self.size = len(self.heap)
+        self.size = len(arr)
 
-        for i in range(len(self.heap)-1, -1, -1):
+        for i in range(len(arr)//2, -1, -1):
             self.__minHeapify(i)
 
 if __name__ == '__main__':
