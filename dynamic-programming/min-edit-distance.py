@@ -1,3 +1,5 @@
+from functools import cache
+
 class Solution:
     # using recursion + caching
     def minDistance1(self, word1: str, word2: str) -> int:
