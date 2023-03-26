@@ -1,3 +1,5 @@
+import random
+
 def partition(A, low, high):
     """
     LOW | HIGH | UNSORTED | PIVOT
@@ -24,15 +26,20 @@ def partition(A, low, high):
     # Return the position from where partition is done
     return i+1
 
-def quickSort(A, low, high):
+def partitionRandom(A, low, high):
+    randpivot = random.randrange(low, high)
+    A[high], A[randpivot] = A[randpivot], A[high]
+    return partition(A, low, high)
+
+def quickSortRandom(A, low, high):
     if low < high:
         # Find pivot element such that
         # element smaller than pivot are on the left
         # element greater than pivot are on the right
-        partition_i = partition(A, low, high)
-        quickSort(A, low, partition_i-1) # Recursive call on the left of pivot
-        quickSort(A, partition_i+1, high) # Recursive call on the right of pivot
+        partition_i = partitionRandom(A, low, high)
+        quickSortRandom(A, low, partition_i-1) # Recursive call on the left of pivot
+        quickSortRandom(A, partition_i+1, high) # Recursive call on the right of pivot
 
 A = [10, 7, 8, 9, 1, 5]
-quickSort(A, 0, len(A)-1)
+quickSortRandom(A, 0, len(A)-1)
 print(f'Sorted Array: {A}')
