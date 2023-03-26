@@ -13,12 +13,19 @@ of size 2.
 # Heap Sort in python
 
 def heapify(arr, n, i):
-    # Find largest among root and children
-    largest = i
+    """
+    Find largest among root and children (but not its subtreets).
+    If the largest isn't the root, but one of its two children,
+    then the heap property has been violated. In this case, we move the largest
+    up to the root (restore heap property). Since a smaller element has been swapped to
+    the original child position with largest value,
+    we continue the recursive call on the child position
+    """
     l = 2 * i + 1
     r = 2 * i + 2
+    largest = i
 
-    if l < n and arr[i] < arr[l]:
+    if l < n and arr[largest] < arr[l]:
         largest = l
 
     if r < n and arr[largest] < arr[r]:
@@ -30,7 +37,10 @@ def heapify(arr, n, i):
         heapify(arr, n, largest)
 
 def buildMaxHeap(arr, n):
-    # Build max heap
+    """
+    Build max heap. Only need to heapify on the first n elements
+    (since all of their children will be checked)
+    """
     for i in range(n//2, -1, -1):
         heapify(arr, n, i)
 
@@ -41,11 +51,13 @@ def heapSort(arr):
     n = len(arr)
     buildMaxHeap(arr, n)
 
+    # precondition: max element of arr[0..i] at arr 0th index, swap
+    # it to correct index i.
     for i in range(n-1, 0, -1):
         # Swap
         arr[i], arr[0] = arr[0], arr[i]
 
-        # Heapify root element
+        # Heapify root element. Here we only check root and two of its children
         heapify(arr, i, 0)
 
 
