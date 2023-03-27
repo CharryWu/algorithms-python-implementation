@@ -1,3 +1,4 @@
+# https://leetcode.com/problems/course-schedule/
 def dfsCycleCheck(G, node, visited, stack):
     visited[node] = True
     stack[node] = True
