@@ -8,6 +8,7 @@ Assume: activities are sorted by finish times, i.e.,
 Goal: Select the largest possible set of non-overlapping (i.e., mutually exclusive) activities
 """
 # https://leetcode.com/problems/non-overlapping-intervals/description/
+# Related: https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         n = len(intervals)
