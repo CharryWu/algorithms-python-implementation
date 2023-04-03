@@ -1,6 +1,11 @@
 # https://bradfieldcs.com/algos/graphs/dijkstras-algorithm/
 # https://www.geeksforgeeks.org/difference-between-minimum-spanning-tree-and-shortest-path/
-
+"""
+Dijkstra's Algorithm basically starts at the node that you choose (the source node) and it analyzes the graph to find the shortest path between that node and all the other nodes in the graph.
+The algorithm keeps track of the currently known shortest distance from each node to the source node and it updates these values if it finds a shorter path.
+Once the algorithm has found the shortest path between the source node and another node, that node is marked as "visited" and added to the path.
+The process continues until all the nodes in the graph have been added to the path. This way, we have a path that connects the source node to all other nodes following the shortest path possible to reach each node.
+"""
 import heapq
 
 def calculate_distances(graph, starting_vertex):
