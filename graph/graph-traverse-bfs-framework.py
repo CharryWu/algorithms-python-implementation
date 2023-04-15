@@ -13,7 +13,7 @@ def graphTraverse(graph, s):
         sz = len(queue)
         # iterate the nodes which are already in the queue
         for i in range(sz):
-            cur = queue.popeft()
+            cur = queue.popleft()
             # NOTE: ADD OPERATION HERE, e.g. check if node is target
 
             for neighbor in graph[cur]:

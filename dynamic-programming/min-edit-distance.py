@@ -1,9 +1,9 @@
-from functools import cache
+from functools import lru_cache
 # https://leetcode.com/problems/edit-distance/
 class Solution:
     # using recursion + caching
     def minDistance1(self, word1: str, word2: str) -> int:
-        @cache  # this decorator will automatically cache the function result
+        @lru_cache(None)  # this decorator will automatically cache the function result
         def minD(w1, w2):
             if w1 == "":
                 return len(w2)
