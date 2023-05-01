@@ -37,7 +37,7 @@ if __name__ == '__main__':
     n = 6
 
     # Adjacency list
-    aList = {[i]: set() for i in range(n)}
+    aList = { i: set() for i in range(n)}
 
     pre = [0] * n
     post = [0] * n
@@ -46,24 +46,24 @@ if __name__ == '__main__':
     visited = [0] * n
 
     # Edges
-    aList[0].append(1)
-    aList[0].append(2)
-    aList[1].append(0)
-    aList[1].append(3)
-    aList[2].append(0)
-    aList[2].append(3)
-    aList[2].append(4)
-    aList[3].append(1)
-    aList[3].append(2)
-    aList[4].append(2)
-    aList[4].append(5)
-    aList[5].append(4)
+    aList[0].add(1)
+    aList[0].add(2)
+    aList[1].add(0)
+    aList[1].add(3)
+    aList[2].add(0)
+    aList[2].add(3)
+    aList[2].add(4)
+    aList[3].add(1)
+    aList[3].add(2)
+    aList[4].add(2)
+    aList[4].add(5)
+    aList[5].add(4)
 
     # DFS starting at Node 1
     dfs(1, aList, pre, post, visited)
 
     # Number of nodes in graph
-    for i in range(1, n + 1):
+    for i in range(n):
         print("Node " + str(i) +
               " Pre number " + str(pre[i]) +
               " Post number " + str(post[i]))
