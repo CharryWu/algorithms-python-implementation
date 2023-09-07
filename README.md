@@ -28,5 +28,12 @@ of that algo or DS will exist in this repo.
     - LRU cache
     - activity scheduling
     - ...
+- `heap`
+    - max heap
+    - min heap
 - `sorting`
     - classic O(N^2) and O(NlogN) sorting algorithms
+- `state-machine`
+    - numeric string parsing
+- `clustering`
+    - K-means
