@@ -8,5 +8,9 @@ class UnionFind:
         return v
 
     def union(self, u, v):
+        ru, rv = self.find(u), self.find(v)
+        if ru != rv:
+            self.u[ru] = rv
+
         if self.u[u] != self.u[v]:
             self.u[u] = self.u[v]
