@@ -33,20 +33,22 @@ def partition(A, low, high):
     """
     # Choose the rightmost element as pivot
     pivot = A[high]
-    # Pointer for greater element
+    # Pointer to end of LOW subarray
     i = low-1
     # Traverse through all elements
     # compare each element with pivot
-    for j in range(low, high):
-        if A[j] <= pivot: # if A[j] > pivot, it automatically goes to HIGH, no need to swap
-            # If element smaller than pivot is found swap it with the greater element pointed by i.
-            # This moves the A[i] to HIGH, A[j] to LOW
-            i += 1
-            # Swapping element at i with element at j
+    for j in range(low, high): # j points to end of HIGH subarray. Each iteration consider one element from UNSORTED
+        if A[j] <= pivot: # Found smaller than pivot element, move it into LOW
+            i += 1 # grow len(LOW) by one, i now points first element of HIGH, which is greater than pivot
+            # PRECONDITION: a[i] > pivot, a[j] <= pivot. The relationship that i points to LOW end and j points to HIGH end is broken.
+            # POSTCONDITION: Swapping element at i with element at j moves a[i] to HIGH, a[j] to LOW, a[i] < pivot, a[j] > pivot
             A[i], A[j] = A[j], A[i]
-    # Swap the pivot element to the correct position: the greater element specified by i
-    A[i+1], A[high] = A[high], A[i+1]
-    # Return the position from where partition is done
+        else: # if A[j] > pivot, it automatically goes to HIGH, no need to swap
+            continue
+    # LOOP POSTCONDITION: j == high-1, A[0..i] < pivot, A[i+1..high-1] >= pivot. j == high-1, pivot == a[high]
+    A[i+1], A[high] = A[high], A[i+1] # SWAP POSTCONDITION: A[i+1..high] >= pivot, (all elements >= pivot stay on its right, all elements < pivot stay on left)
+
+    # Return the position of pivot after swapping
     return i+1
 
 def quickSort(A, low, high):
