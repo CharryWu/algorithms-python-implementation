@@ -1,7 +1,7 @@
 from collections import defaultdict, deque
 
 class Graph:
-    def init(self, n):
+    def __init__(self, n):
         self.graph = defaultdict(list)
         self.n = n
         self.index = 0
@@ -22,19 +22,25 @@ class Graph:
         :param v: The current vertex being processed.
         :type v: int
         """
+        # Initialize the index for v
         self.indices[v] = self.index
         self.lowlink[v] = self.index
         self.index += 1
         self.stack.append(v)
         self.on_stack[v] = True
 
+        # Recursively explore the neighboring vertices
         for w in self.graph[v]:
             if self.indices[w] == -1:
+                # Vertex w has not been explored before
                 self.tarjan_scc(w)
                 self.lowlink[v] = min(self.lowlink[v], self.lowlink[w])
             elif self.on_stack[w]:
+                # Vertex w is currently on the stack
                 self.lowlink[v] = min(self.lowlink[v], self.indices[w])
 
+        # If v is a root node, pop the vertices from the stack and
+        # add them to the strongly connected component (SCC) list
         if self.lowlink[v] == self.indices[v]:
             scc = []
             while True:
